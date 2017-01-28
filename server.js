@@ -13,26 +13,28 @@ db.on('connect', function () {
     console.log('database connected')
 })
 
+// Express
 const app = express();
 app.use(bodyParser.urlencoded({ extended : true }));
+app.set('view engine', 'ejs');
 
 app.listen(3000, function() {
     console.log('listening on 3000')
 });
 
+// REST Endpoints
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
+    var dump = db.clients.find().toArray(function(err, result) {
+        if(err) return console.log(err);
 
-app.get('/clients', function(req, res){
-    var dump = db.clients.find().toArray();
-    res.send(dump);
+        res.render('index.ejs', { clients : result })
+    });
 });
 
 app.post('/client', function(req, res) {
     console.log(req.body);
     db.clients.save(req.body, function(err, res){
-        if(err) console.log(err);
+        if(err) return console.log(err);
     });
     res.redirect('/');
 });

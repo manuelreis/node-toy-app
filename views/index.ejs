@@ -5,12 +5,23 @@
     <title>Node Toy App</title>
 </head>
 <body>
-  Welcome to my node toy app.
+
     <form action="/client" method="POST">
         <input type="text" placeholder="Jane Doe" name="name">
         <input type="text" placeholder="email@server.com" name="email">
         <input type="number" placeholder="0" name="requests">
         <button type="submit">Create client</button>
     </form>
+    
+    <ul class="clients">
+        <% for(var i=0; i < clients.length; i++) {%>
+            <li class="client">
+                 <span><%= clients[i].name %></span>
+                 <span><%= clients[i].email %></span>
+                 <span><%= clients[i].requests %></span>
+            </li>
+        <% } %>
+    </ul>    
+
 </body>
 </html>
