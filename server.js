@@ -32,8 +32,15 @@ app.get('/', function(req, res) {
 });
 
 app.post('/client', function(req, res) {
-    console.log(req.body);
     db.clients.save(req.body, function(err, res){
+        if(err) return console.log(err);
+    });
+    res.redirect('/');
+});
+
+app.get('/clients/delete', function(req, res) {
+    var email = req.query.email;
+    db.clients.remove({ email : email }, function(err, result){
         if(err) return console.log(err);
     });
     res.redirect('/');

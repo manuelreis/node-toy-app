@@ -19,6 +19,9 @@
                  <span><%= clients[i].name %></span>
                  <span><%= clients[i].email %></span>
                  <span><%= clients[i].requests %></span>
+                 <a href="/clients/delete?email=<%= clients[i].email %>">
+                    <span> Delete Client </span>
+                 </a>
             </li>
         <% } %>
     </ul>    
