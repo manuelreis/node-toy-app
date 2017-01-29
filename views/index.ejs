@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Node Toy App</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -17,15 +25,16 @@
         Name: <input type="text" placeholder="Jane Doe" name="name">
         Email: <input type="text" placeholder="email@server.com" name="email">
         Number of Requests: <input type="number" placeholder="0" name="requests">
-        <button type="submit">Filter clients</button>
+        <button type="submit">Filter</button>
     </form>
     
-    <table>
+    <table class="table table-hover">
         <%if (clients.length > 0) { %>
         <tr>
             <th> Name </th>
             <th> Email </th>
             <th> Requests </th>
+            <th> </th>
         </tr>
         <% } %>
         <% for(var i=0; i < clients.length; i++) {%>
@@ -35,7 +44,7 @@
                  <td><%= clients[i].requests %></td>
                  <td>
                     <a href="/clients/delete?email=<%= clients[i].email %>&name=<%= clients[i].name %>">
-                    Delete 
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
                     </a> 
                 </td>
             </tr>
