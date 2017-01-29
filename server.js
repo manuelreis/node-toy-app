@@ -26,7 +26,6 @@ app.listen(3000, function() {
 app.get('/', function(req, res) {
     var dump = db.clients.find().toArray(function(err, result) {
         if(err) return console.log(err);
-
         res.render('index.ejs', { clients : result })
     });
 });
