@@ -39,13 +39,17 @@ app.post('/client', function(req, res) {
 });
 
 app.post('/search', function(req, res) {
-    var filter = { $or : [] };
-
     var search = req.body.search;
-
-    filter.$or = filter.$or.concat([{ name : search }]);
-    filter.$or = filter.$or.concat([{ email : search }]);
-    filter.$or = filter.$or.concat([{ requests : search }]);
+    var filter;
+    
+    if(search != ''){
+        filter = { $or : [] };
+        filter.$or = filter.$or.concat([{ name : search }]);
+        filter.$or = filter.$or.concat([{ email : search }]);
+        filter.$or = filter.$or.concat([{ requests : search }]);
+    } else {
+        filter = {};
+    }
     
     var dump = db.clients.find(filter).toArray(function(err, result) {
         if(err) return console.log(err);
