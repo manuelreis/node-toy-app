@@ -37,9 +37,34 @@ app.post('/client', function(req, res) {
     res.redirect('/');
 });
 
+app.post('/clients/filter', function(req, res) {
+    var filter = {};
+
+    var name = req.body.name;
+    if(name != '') {
+        filter.name = name;
+    }
+
+    var email = req.body.email;
+    if(email != '') {
+        filter.email = email;
+    } 
+
+    var requests = req.body.requests;
+    if(requests != '') {
+        filter.requests = requests;
+    }
+    
+    var dump = db.clients.find(filter).toArray(function(err, result) {
+        if(err) return console.log(err);
+        res.render('index.ejs', { clients : result })
+    });
+});
+
 app.get('/clients/delete', function(req, res) {
     var email = req.query.email;
-    db.clients.remove({ email : email }, function(err, result){
+    var name = req.query.name;
+    db.clients.remove({ email : email, name : name }, function(err, result){
         if(err) return console.log(err);
     });
     res.redirect('/');
