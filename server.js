@@ -38,23 +38,14 @@ app.post('/client', function(req, res) {
     res.redirect('/');
 });
 
-app.post('/clients/filter', function(req, res) {
-    var filter = {};
+app.post('/search', function(req, res) {
+    var filter = { $or : [] };
 
-    var name = req.body.name;
-    if(name != '') {
-        filter.name = name;
-    }
+    var search = req.body.search;
 
-    var email = req.body.email;
-    if(email != '') {
-        filter.email = email;
-    } 
-
-    var requests = req.body.requests;
-    if(requests != '') {
-        filter.requests = requests;
-    }
+    filter.$or = filter.$or.concat([{ name : search }]);
+    filter.$or = filter.$or.concat([{ email : search }]);
+    filter.$or = filter.$or.concat([{ requests : search }]);
     
     var dump = db.clients.find(filter).toArray(function(err, result) {
         if(err) return console.log(err);

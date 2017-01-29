@@ -21,11 +21,9 @@
         <button type="submit">Create client</button>
     </form>
     
-    <form action="/clients/filter" method="POST">
-        Name: <input type="text" placeholder="Jane Doe" name="name">
-        Email: <input type="text" placeholder="email@server.com" name="email">
-        Number of Requests: <input type="number" placeholder="0" name="requests">
-        <button type="submit">Filter</button>
+    <form action="/search" method="POST">
+        Name: <input type="text" placeholder="search..." name="search">
+        <button type="submit">Search</button>
     </form>
     
     <table class="table table-hover">
