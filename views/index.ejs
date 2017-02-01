@@ -14,40 +14,85 @@
 </head>
 <body>
 
-    <form action="/client" method="POST">
-        Name: <input type="text" placeholder="Jane Doe" name="name">
-        Email: <input type="text" placeholder="email@server.com" name="email">
-        Number of Requests: <input type="number" placeholder="0" name="requests">
-        <button type="submit">Create client</button>
-    </form>
+
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Node Toy App</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+        
+            <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#myModal">Create</button>
+
+
+            <form action="/search" method="POST" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input id="searchInput" type="text" placeholder="Search" name="search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+
+        </div>
+      </div>
+    </nav>
+
     
-    <form action="/search" method="POST">
-        Name: <input type="text" placeholder="search..." name="search">
-        <button type="submit">Search</button>
-    </form>
-    
-    <table class="table table-hover">
-        <%if (clients.length > 0) { %>
-        <tr>
-            <th> Name </th>
-            <th> Email </th>
-            <th> Requests </th>
-            <th> </th>
-        </tr>
-        <% } %>
-        <% for(var i=0; i < clients.length; i++) {%>
-            <tr>
-                 <td><%= clients[i].name %></td>
-                 <td><%= clients[i].email %></td>
-                 <td><%= clients[i].requests %></td>
-                 <td>
-                    <a href="/clients/delete?email=<%= clients[i].email %>&name=<%= clients[i].name %>">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
-                    </a> 
-                </td>
-            </tr>
-        <% } %>
-    </table>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <%if (clients.length > 0) { %>
+                    <tr>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Requests </th>
+                        <th> </th>
+                    </tr>
+                    <% } %>
+                    <% for(var i=0; i < clients.length; i++) {%>
+                        <tr>
+                             <td><%= clients[i].name %></td>
+                             <td><%= clients[i].email %></td>
+                             <td><%= clients[i].requests %></td>
+                             <td>
+                                <a href="/clients/delete?email=<%= clients[i].email %>&name=<%= clients[i].name %>">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
+                                </a> 
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/client" method="POST">
+                    <div class="form-group">
+                        <label for="nameInput">Name</label>    
+                        <input id="nameInput" type="text" placeholder="Jane Doe" name="name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>    
+                        <input id="emailInput" type="text" placeholder="email@server.com" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requestsInput">Number Requests</label>    
+                        <input id="requestsInput" type="number" placeholder="0" name="requests">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Create client</button>
+                </form>
+            </div>
+        </div>
+
 
 </body>
 </html>
