@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Node Toy App</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
-
-
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -31,7 +33,7 @@
 
             <form action="/search" method="POST" class="navbar-form navbar-right">
                 <div class="form-group">
-                    <input id="searchInput" type="text" placeholder="Search" name="search">
+                    <input id="searchInput" class="form-control" type="text" placeholder="Search" name="search">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -41,7 +43,42 @@
       </div>
     </nav>
 
-    
+   
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Create new client</h4>
+            </div>
+            <div class="modal-body">
+              
+                <form action="/client" method="POST">
+                    <div class="form-group">
+                        <label for="nameInput">Name</label>    
+                        <input id="nameInput" class="form-control" type="text" placeholder="Jane Doe" name="name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>    
+                        <input id="emailInput" class="form-control" type="text" placeholder="email@server.com" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requestsInput">Number Requests</label>    
+                        <input id="requestsInput" class="form-control" type="number" placeholder="0" name="requests">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Create</button>
+                </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+ 
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-hover">
@@ -70,28 +107,6 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-md-12">
-                <form action="/client" method="POST">
-                    <div class="form-group">
-                        <label for="nameInput">Name</label>    
-                        <input id="nameInput" type="text" placeholder="Jane Doe" name="name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="emailInput">Email</label>    
-                        <input id="emailInput" type="text" placeholder="email@server.com" name="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="requestsInput">Number Requests</label>    
-                        <input id="requestsInput" type="number" placeholder="0" name="requests">
-                    </div>
-
-                    <button type="submit" class="btn btn-default">Create client</button>
-                </form>
-            </div>
-        </div>
 
 
 </body>
