@@ -14,6 +14,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -50,20 +51,26 @@
             
                 <div class="modal-body">
 
-                    <form action="/client" method="POST">
-                        <div class="form-group">
+                    <form action="/client" method="POST" data-toggle="validator" role="form" autocomplete="off">
+                        <div class="form-group has-feedback">
                             <label for="nameInput">Name</label>    
-                            <input id="nameInput" class="form-control" type="text" placeholder="Jane Doe" name="name">
+                            <input id="nameInput" class="form-control" type="text" placeholder="Jane Doe" name="name" data-minlength="6" data-error="Minimum of 6 characters" required>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="emailInput">Email</label>    
-                            <input id="emailInput" class="form-control" type="text" placeholder="email@server.com" name="email">
+                            <input id="emailInput" class="form-control" type="email" placeholder="email@server.com" name="email" data-error="Email address is invalid" required>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="requestsInput">Number Requests</label>    
-                            <input id="requestsInput" class="form-control" type="number" placeholder="0" name="requests">
+                            <input id="requestsInput" class="form-control" data-minlength="1" type="number" value=0 name="requests" required>
+
+                            <div class="help-block with-errors"></div>
                         </div>
 
                         <button type="submit" class="btn btn-success">Create</button>
