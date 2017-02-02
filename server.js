@@ -43,10 +43,11 @@ app.post('/search', function(req, res) {
     var filter;
     
     if(search != ''){
-        filter = { $or : [] };
-        filter.$or = filter.$or.concat([{ name : search }]);
-        filter.$or = filter.$or.concat([{ email : search }]);
-        filter.$or = filter.$or.concat([{ requests : search }]);
+        filter = { $or : [
+            { name : search },
+            { email : search },
+            { requests : search }
+        ] };
     } else {
         filter = {};
     }
