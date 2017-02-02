@@ -19,7 +19,7 @@ npm install
 node server.js
 ```
 
-#### Dump records
+##### Dump records
 ```bash
 mongo
 use node-toy
